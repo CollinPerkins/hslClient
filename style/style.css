@@ -1,36 +1,12 @@
-.right {
-  text-align: right;
-}
-.quoteSize {
-  font-size: 30px;
+.margin-top {
+
+  margin-top: 30px;
 }
 
-.quoteConainer {
-  margin: 0 auto;
-  margin-top: 35%;
-  background-color: white;
+.margin-left {
+  margin-left: 15px;
 }
 
-.centerText {
-  text-align: center;
-}
-
-.width-200 {
-  width: 200px;
-}
-
-.twobutton {
-  width: 50%;
-}
-
-.button {
-  width: 25%;
-}
-
-.width100 {
-  width: 100%;
-}
-
-.inline {
-  display: inline-block;
+.margin-bottom {
+  margin-bottom: 30px;
 }

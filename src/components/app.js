@@ -52,7 +52,7 @@ export default class App extends Component {
     event.preventDefault();
   }
 
-  print(){
+  print(event){
     var newArray = this.state.qr;
     newArray.shift();
     var data = JSON.stringify(newArray);
@@ -70,7 +70,7 @@ export default class App extends Component {
        <head>
          <style>
           .imgwidth {
-            width: 80% !important;
+            width: 70% !important;
 
           }
          </style>
@@ -86,6 +86,8 @@ export default class App extends Component {
        expDate: '1900-01-01T00:00:00.000Z',
        qty: 1
      }]})
+
+     event.preventDefault();
   }
 
   createQr() {
@@ -114,29 +116,32 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Location:
-            <input type="text" value={this.state.location} onChange={this.handleLocationChange} autoFocus='true' />
-          </label>
-          <br></br>
-          <label>
-            UPC:
-            <input type="text" value={this.state.upc} onChange={this.handleUpcChange}/>
-          </label>
-          <br></br>
-          <input type="submit" value="Submit" onClick={this.createQr} />
+        <form onSubmit={this.handleSubmit} className="margin-top">
+          <div className="form-group row">
+            <label for="example-text-input" className="col-2 col-form-label">Location</label>
+            <div className="col-10">
+              <input className="form-control" type="text" value={this.state.location} onChange={this.handleLocationChange} autoFocus='true' ></input>
+            </div>
+          </div>
+          <div className="form-group row">
+            <label for="example-text-input" className="col-2 col-form-label">UPC</label>
+            <div className="col-10">
+              <input className="form-control" type="text" value={this.state.upc} onChange={this.handleUpcChange} ></input>
+            </div>
+          </div>
+          <input className="btn btn-primary" type="submit" value="Submit" onClick={this.createQr} />
+          <button className="btn btn-primary margin-left" onClick={this.print}>Print</button>
         </form>
-        <div>
-          <div id="printQr">
-            {JSON.stringify(this.state.qr)}
+        <div className="row margin-top">
+          <div className="col-md-9">
+            <div id="printQr">
+              {JSON.stringify(this.state.qr)}
+            </div>
+          </div>
+          <div className="col-md-3">
+            <QRCode value={JSON.stringify(this.state.qr)} />
           </div>
         </div>
-        <div>
-
-          <QRCode value={JSON.stringify(this.state.qr)} />
-        </div>
-        <button onClick={this.print}>Print</button>
       </div>
     );
   }
