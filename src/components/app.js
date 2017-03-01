@@ -13,12 +13,14 @@ export default class App extends Component {
     hasStarted: false,
     location: "",
     upc: " ",
-    qr: [{
-      sku: '1',
-      lot: '0',
-      expDate: '1900-01-01T00:00:00.000Z',
-      qty: 1
-    }]
+    qr: [
+    //   {
+    //   sku: '1',
+    //   lot: '0',
+    //   expDate: '1900-01-01T00:00:00.000Z',
+    //   qty: 1
+    // }
+  ]
   }
 
   this.handleUpcChange = this.handleUpcChange.bind(this);
@@ -39,7 +41,8 @@ export default class App extends Component {
     if(this.state.upc === "" || this.state.location === "") {
       return;
     }
-    axios.post('https://arcane-beyond-69327.herokuapp.com/addInventory', {
+    // https://arcane-beyond-69327.herokuapp.com/addInventory
+    axios.post('http://localhost:3000/addInventory', {
       upc: this.state.upc,
       location: this.state.location
     })
@@ -54,7 +57,7 @@ export default class App extends Component {
 
   print(event){
     var newArray = this.state.qr;
-    newArray.shift();
+    console.log(newArray);
     var data = JSON.stringify(newArray);
 
     var dataURI = qr(data, {type: 30, size: 6, level: 'Q'})
@@ -70,7 +73,7 @@ export default class App extends Component {
        <head>
          <style>
           .imgwidth {
-            width: 70% !important;
+            width: 100% !important;
 
           }
          </style>
@@ -80,12 +83,14 @@ export default class App extends Component {
        </body></html>`);
      w.print();
      w.close();
-     this.setState({qr: [{
-       sku: '1',
-       lot: '0',
-       expDate: '1900-01-01T00:00:00.000Z',
-       qty: 1
-     }]})
+     this.setState({qr: [
+    //    {
+    //    sku: '1',
+    //    lot: '0',
+    //    expDate: '1900-01-01T00:00:00.000Z',
+    //    qty: 1
+    //  }
+   ]})
 
      event.preventDefault();
   }
