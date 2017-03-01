@@ -42,7 +42,7 @@ export default class App extends Component {
       return;
     }
     // https://arcane-beyond-69327.herokuapp.com/addInventory
-    axios.post('http://localhost:3000/addInventory', {
+    axios.post('https://arcane-beyond-69327.herokuapp.com/addInventory', {
       upc: this.state.upc,
       location: this.state.location
     })
